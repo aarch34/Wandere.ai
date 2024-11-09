@@ -1,0 +1,27 @@
+
+
+.loaderContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #f0f8ff; 
+    overflow: hidden;
+  }
+  
+  .plane {
+    width: 80px;
+    height: auto;
+    animation: flyAcross 3s infinite linear;
+  }
+  
+  @keyframes flyAcross {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100vw);
+    }
+  }
+  
