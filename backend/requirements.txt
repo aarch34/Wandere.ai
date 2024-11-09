@@ -5,3 +5,9 @@ fastapi
 pydantic
 redis
 pymongo 
+yagmail
+reportlab
+sendgrid
+huggingface_hub
+jinja2 
+pdfkit
