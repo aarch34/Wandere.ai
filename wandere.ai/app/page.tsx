@@ -1,15 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { Map, Plane, Star, MessageSquare } from "lucide-react";
-import { FeatureCard } from "./_components/feature-card";
-import Link from "next/link";
-import getAuthServerSession from "@/lib/get-auth-server-session";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Map, MessageSquare, Plane, Star } from "lucide-react";
 import Image from "next/image";
-import LogoutButton from "./_components/logout-button";
+import Link from "next/link";
+import { FeatureCard } from "./_components/feature-card";
 
 export default async function Home() {
-  const session = await getAuthServerSession();
-  
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -28,34 +24,7 @@ export default async function Home() {
         {/* Content Container */}
         <div className="relative container mx-auto px-4 h-full flex flex-col items-center justify-center">
           {/* User Session Info */}
-          {session && (
-            <div className="flex items-center gap-8 pt-8">
-              <Avatar>
-                <AvatarImage
-                  src={session?.user?.image ?? "#"}
-                  alt={session?.user?.name ?? "JD"}
-                  asChild
-                >
-                  <Image
-                    width={64}
-                    height={64}
-                    src={session?.user?.image ?? "#"}
-                    alt={session?.user?.name ?? "JD"}
-                  />
-                </AvatarImage>
-                <AvatarFallback>
-                  {session?.user?.name?.slice(0, 2) ?? "JD"}
-                </AvatarFallback>
-              </Avatar>
-              <p className="text-white">
-                Welcome back,{" "}
-                <span className="font-semibold">
-                  {session?.user?.name ?? "JD"}
-                </span>
-              </p>
-              <LogoutButton />
-            </div>
-          )}
+
 
           {/* Hero Content */}
           <div className="flex items-center justify-center min-h-[600px]">
