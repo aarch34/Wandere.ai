@@ -1,5 +1,6 @@
 import React from 'react';
 import { Plane, Map, Calendar, Settings, LogOut, User } from 'lucide-react';
+import Link from 'next/link';
 
 const DashboardPage = () => {
   return (
@@ -35,10 +36,10 @@ const DashboardPage = () => {
               </button>
             </li>
             <li>
-              <button className="flex items-center gap-3 text-white/80 hover:text-white w-full p-2 rounded-lg hover:bg-teal-700 transition-colors">
+              <Link  href="/trips" className="flex items-center gap-3 text-white/80 hover:text-white w-full p-2 rounded-lg hover:bg-teal-700 transition-colors">
                 <Calendar size={20} />
                 Trips
-              </button>
+              </Link>
             </li>
             <li>
               <button className="flex items-center gap-3 text-white/80 hover:text-white w-full p-2 rounded-lg hover:bg-teal-700 transition-colors">
