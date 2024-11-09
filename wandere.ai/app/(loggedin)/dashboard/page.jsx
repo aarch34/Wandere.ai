@@ -98,7 +98,7 @@ export default function DashboardPage() {
         </CardTitle>
       </CardHeader>
       <div className="flex-1 overflow-hidden flex flex-col">
-        <CardContent className="flex-1 p-0 flex flex-col">
+        <CardContent className="flex-1 p-0 flex flex-col min-h-0">
           <ScrollArea className="flex-1 p-4 bg-gradient-to-b from-gray-50 to-white h-dvh">
             {isLoading ? (
               <div className="space-y-4">
