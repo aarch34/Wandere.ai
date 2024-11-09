@@ -26,7 +26,7 @@ const Layout = async ({ children }: { children: ReactNode }) => {
             <div className="w-10 h-10 bg-teal-600 rounded-full flex items-center justify-center">
             <Avatar>
                 <AvatarImage
-                  src={session?.user?.image ?? "#"}
+                  src={session?.user.image ?? "#"}
                   alt={session?.user?.name ?? "JD"}
                   asChild
                 >
@@ -43,7 +43,7 @@ const Layout = async ({ children }: { children: ReactNode }) => {
               </Avatar>
             </div>
             <div>
-              <h2 className="font-medium">{session.user?.name}</h2>
+              <h2 className="font-medium truncate">{session.user?.name}</h2>
             </div>
           </div>
         </div>
