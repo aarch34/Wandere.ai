@@ -1,13 +1,14 @@
 import getAuthServerSession from "@/lib/get-auth-server-session";
+import { Calendar, LogOut, Map, Plane, Settings, User } from "lucide-react";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { ReactNode } from "react";
-import React from "react";
-import { Plane, Map, Calendar, Settings, LogOut, User } from "lucide-react";
-import Link from "next/link";
+import Providers from "./providers";
+
+
 
 export default async function Layout({ children }: { children: ReactNode }) {
   const session = await getAuthServerSession();
-  console.log("session", session);
   if (!session) {
     return redirect("/login");
   }
@@ -28,7 +29,7 @@ export default async function Layout({ children }: { children: ReactNode }) {
               <User size={20} />
             </div>
             <div>
-              <h2 className="font-medium">John Doe</h2>
+              <h2 className="font-medium">{session.user?.name}</h2>
             </div>
           </div>
         </div>
@@ -72,7 +73,7 @@ export default async function Layout({ children }: { children: ReactNode }) {
           Logout
         </button>
       </div>
-      {children}
+      <Providers>{children}</Providers>
     </div>
   );
 }

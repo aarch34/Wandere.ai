@@ -1,0 +1,12 @@
+{
+    "editor.fontFamily": "'CommitMono Nerd Font'",
+    "terminal.integrated.fontFamily": "'CommitMono Nerd Font'",
+    "workbench.colorTheme": "Stylix",
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  }
