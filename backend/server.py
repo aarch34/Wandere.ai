@@ -6,7 +6,7 @@ from setp_router import generate_navigation_guide
 from trip_json_gen import generate_travel_itinerary
 from local_guide import generate_local_guide
 from chat import get_chat_response
-from mongo_service import get_user_preferences
+from mongo_service import get_user_preferences, get_chat_history, serialize_mongo_data
 import redis
 
 load_dotenv()
@@ -33,6 +33,8 @@ class RouteGuideInput(BaseModel):
     longitude: float
     latitude: float
 
+class GetHistoryInput(BaseModel):
+    user_id: str
 
 @app.post("/chat")
 async def chat_with_ai(user_input: UserInput):
@@ -49,6 +51,17 @@ async def chat_with_ai(user_input: UserInput):
         return chat_response
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+    
+@app.post("/get_history")
+async def get_history(user_input: GetHistoryInput):
+    if not user_input.user_id:
+        raise HTTPException(status_code=400, detail="User ID is required to get chat history")
+    
+    chat_history = get_chat_history(user_input.user_id)
+    if not chat_history:
+        raise HTTPException(status_code=404, detail="No chat history found for this user")
+    
+    return serialize_mongo_data(chat_history)
 
 
 @app.post("/local_guide")
@@ -65,6 +78,9 @@ async def local_guide(location_input: LocationInput):
 
 @app.post("/get_itienary")
 async def get_itienary(user_input: DestinationInput):
+    if not user_input.user_id:
+        raise HTTPException(status_code=400, detail="Error: User ID field is required for generating itinerary")
+    user_id = user_input.user_id
     if not user_input.destination:
         raise HTTPException(status_code=400, detail="Error: Destination field is required for generating itinerary")
     destination = user_input.destination
@@ -89,7 +105,7 @@ async def get_itienary(user_input: DestinationInput):
         raise HTTPException(status_code=500, detail="Error: Groq API key not found in environment variables")
     try:
         groq_api_key = os.environ.get("GROQ_API_KEY")
-        itinerary = generate_travel_itinerary(destination, start_date, end_date, interests, budget_category, number_of_travelers, groq_api_key)
+        itinerary = generate_travel_itinerary(user_id, destination, start_date, end_date, interests, budget_category, number_of_travelers, groq_api_key)
         return itinerary
     except Exception as e: 
         raise HTTPException(status_code=500, detail=str(e))
