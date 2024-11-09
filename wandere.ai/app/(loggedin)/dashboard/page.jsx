@@ -11,9 +11,9 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { Input } from "@/components/ui/input"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Skeleton } from "@/components/ui/skeleton"
-
-const fetchMessages = async () => {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/messages`)
+import { useUser } from "@auth0/nextjs-auth0/client"
+const fetchMessages = async (user_id) => {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/messages?user_id=${user_id}`)
   if (!response.ok) {
     return []
   }
@@ -21,11 +21,12 @@ const fetchMessages = async () => {
 }
 
 export default function DashboardPage() {
+  const {user} = useUser()
   const [message, setMessage] = useState('')
   const queryClient = useQueryClient()
 
   const { data: messages = [], isLoading, error } = useQuery({
-    queryKey: ['messages'],
+    queryKey: ['messages', { user_id: user.sub }],
     queryFn: fetchMessages,
     staleTime: Infinity,
     refetchOnWindowFocus: false,
@@ -39,7 +40,7 @@ export default function DashboardPage() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          user_id: 'current-user-id',
+          user_id: user.sub,
           message: newMessage,
         }),
       })
