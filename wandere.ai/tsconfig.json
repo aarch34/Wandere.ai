@@ -31,7 +31,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "app/(loggedin)/trips/page.jsx"  ],
+, "app/(loggedin)/trips/page.jsx", "app/(loggedin)/plan-trip/page.jsx"  ],
   "exclude": [
     "node_modules"
   ]

@@ -3,6 +3,8 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import {MapPin, Calendar, ChevronRight, Plane} from 'lucide-react';
+import Link from "next/link"
+
 const TripPage = () => {
   const previousTrips = [     
     {
@@ -38,10 +40,14 @@ const TripPage = () => {
               <MapPin className="text-teal-600" />
               Your Trips
             </h1>
-            <button className="px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors flex items-center gap-2">
-              <Plane size={20} />
-              Plan New Trip
-            </button>
+            <Link
+  href="/plan-trip"
+  className={`flex items-center space-x-2 p-2 rounded-lg w-full transition-colors 
+     bg-teal-700 hover:bg-teal-700 w-fit text-white
+  `}
+>
+  <span>Plan Trip</span>
+</Link>
           </div>
 
           {/* Grid of Trips */}
