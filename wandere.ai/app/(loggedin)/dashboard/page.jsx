@@ -12,12 +12,47 @@ import { Input } from "@/components/ui/input"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Skeleton } from "@/components/ui/skeleton"
 import { useUser } from "@auth0/nextjs-auth0/client"
+
+function convertMessages(originalMessages) {
+  const convertedMessages = [];
+  
+  originalMessages.forEach(msg => {
+    // Create user message object
+    convertedMessages.push({
+      id: new Date(msg.timestamp).getTime(),
+      message: msg.user_message,
+      sender: 'user',
+      timestamp: msg.timestamp
+    });
+    
+    // Create assistant message object
+    convertedMessages.push({
+      id: new Date(msg.timestamp).getTime() + 1, // Add 1ms to ensure unique id
+      message: msg.ai_response.response,
+      sender: 'assistant',
+      timestamp: msg.timestamp
+    });
+  });
+  
+  return convertedMessages;
+}
+
+
 const fetchMessages = async (user_id) => {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/messages?user_id=${user_id}`)
+  console.log(user_id)
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/get_history`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ user_id }),
+  })
   if (!response.ok) {
     return []
   }
-  return response.json()
+  const data  = await response.json()
+
+  return convertMessages(data)
 }
 
 export default function DashboardPage() {
@@ -26,8 +61,8 @@ export default function DashboardPage() {
   const queryClient = useQueryClient()
 
   const { data: messages = [], isLoading, error } = useQuery({
-    queryKey: ['messages', { user_id: user.sub }],
-    queryFn: fetchMessages,
+    queryKey: ['messages'],
+    queryFn: ()=>fetchMessages(user.sub ?? user.email),
     staleTime: Infinity,
     refetchOnWindowFocus: false,
   })

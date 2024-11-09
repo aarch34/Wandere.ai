@@ -51,10 +51,10 @@ const Layout = async ({ children }: { children: ReactNode }) => {
         <nav className="flex-1">
           <ul className="space-y-4">
             <li>
-              <button className="flex items-center gap-3 text-white/80 hover:text-white w-full p-2 rounded-lg hover:bg-teal-700 transition-colors">
+              <Link href="/dashboard" className="flex items-center gap-3 text-white/80 hover:text-white w-full p-2 rounded-lg hover:bg-teal-700 transition-colors">
                 <Map size={20} />
                 Explore
-              </button>
+              </Link>
             </li>
             <li>
               <Link
