@@ -1,8 +1,5 @@
 # Wandere.ai-Backend
 
-<<<<<<< HEAD
-- Install https://wkhtmltopdf.org/
-=======
 This folder contains the backend services for the AI Meets Wanderlust project. The backend generates customized travel itineraries, handles user authentication, and manages data storage. It is built using Python and Flask, with MongoDB Atlas for database management and Auth0 for secure authentication.
 
 ## Key Components
@@ -75,6 +72,4 @@ SECRET_ACCESS_KEY_S3="YOUR_S3_SECRET_ACCESS_KEY"
 python filename.py
 ```
 
-
 - Install https://wkhtmltopdf.org/ for pdf generation. 
->>>>>>> 24e8a5a2079476a79312e1773a8779f7338666d1
