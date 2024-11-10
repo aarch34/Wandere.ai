@@ -1,5 +1,4 @@
 # Wandere.ai-Backend
-# Wandere.ai-Backend
 
 This folder contains the backend services for the AI Meets Wanderlust project. The backend generates customized travel itineraries, handles user authentication, and manages data storage. It is built using Python and Flask, with MongoDB Atlas for database management and Auth0 for secure authentication.
 
