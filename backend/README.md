@@ -46,10 +46,6 @@ This folder contains the backend services for the AI Meets Wanderlust project. T
 3.**Set up Environment Variables:**
 Create a .env file and add your MongoDB, Auth0, and any other API keys:
 
-4. **Environment Configuration:**
-
-This project requires several environment variables for proper setup. Here’s a sample `.env` configuration with placeholders. Be sure to replace the placeholder values with your actual credentials and settings.
-
 ```
 # API Keys
 API_KEY="YOUR_HUGGINGFACE_API_KEY"
@@ -71,7 +67,7 @@ ACCESS_KEY_S3_ID="YOUR_S3_ACCESS_KEY_ID"
 SECRET_ACCESS_KEY_S3="YOUR_S3_SECRET_ACCESS_KEY"
 ```
 
-5. **Run the Application:**
+4. **Run the Application:**
 ```
 python filename.py
 ```
