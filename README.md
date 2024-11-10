@@ -6,7 +6,7 @@
 ## 📖 Overview
 
 This project is built to deliver personalized travel plans based on user preferences, location, and interests. Developed by a team of beginner developers using open-source resources, it’s designed to make trip planning seamless and tailored to individual needs.
->>>>>>> 24e8a5a2079476a79312e1773a8779f7338666d1
+
 
 ## 🌟 Features
 - **Custom Itineraries:** Generates detailed, multi-day travel itineraries based on user inputs such as location, season, and interests.
