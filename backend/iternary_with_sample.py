@@ -5,12 +5,12 @@ from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas
 import yagmail
 from huggingface_hub import InferenceClient
+load_dotenv()
 
 client = InferenceClient(api_key=os.getenv("api_key"))
 conversation_history = []
 
 
-load_dotenv()
 # client = Groq(
 #     api_key=os.environ.get("GROQ_API_KEY"),
 # )
