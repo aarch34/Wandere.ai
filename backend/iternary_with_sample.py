@@ -6,7 +6,11 @@ from reportlab.pdfgen import canvas
 import yagmail
 from huggingface_hub import InferenceClient
 
+<<<<<<< HEAD
 client = InferenceClient(api_key="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")
+=======
+client = InferenceClient(api_key=os.getenv("api_key"))
+>>>>>>> 24e8a5a2079476a79312e1773a8779f7338666d1
 conversation_history = []
 
 
@@ -96,7 +100,11 @@ def generate_itinerary_pdf(itinerary_text, location):
 
     # Set starting position for text
     y_position = height - 80
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 24e8a5a2079476a79312e1773a8779f7338666d1
     # Split the itinerary into lines for better formatting
     for line in itinerary_text.splitlines():
         # Check for day headers and format them
@@ -132,6 +140,7 @@ def generate_itinerary_pdf(itinerary_text, location):
 def send_email(email, pdf_filename, title):
     yag = yagmail.SMTP(user=os.getenv("GMAIL_USER"), password=os.getenv("GMAIL_PASSWORD"))
     subject = f"Your {title} is Ready to Explore!"
+<<<<<<< HEAD
     
     body = f"""
     Dear Traveler,
@@ -139,6 +148,15 @@ def send_email(email, pdf_filename, title):
     We are thrilled to present to you your personalized {title.lower()} for your upcoming adventures! 🌍✈️ 
 
     Whether you are wandering through the vibrant streets of a bustling city or exploring the serene landscapes of nature, this guide/itinerary is crafted to enhance your experience. Inside, you will find a wealth of information designed to inspire and assist you on your journey. 
+=======
+
+    body = f"""
+    Dear Traveler,
+
+    We are thrilled to present to you your personalized {title.lower()} for your upcoming adventures! 🌍✈️
+
+    Whether you are wandering through the vibrant streets of a bustling city or exploring the serene landscapes of nature, this guide/itinerary is crafted to enhance your experience. Inside, you will find a wealth of information designed to inspire and assist you on your journey.
+>>>>>>> 24e8a5a2079476a79312e1773a8779f7338666d1
 
     Here's what awaits you:
     - **Cultural Insights:** Immerse yourself in the local culture and understand the significance of the places you will visit.
@@ -146,7 +164,11 @@ def send_email(email, pdf_filename, title):
     - **Local Tips:** Get insider knowledge about the best spots to eat, drink, and unwind, along with handy phrases that will help you connect with the locals.
     - **Comprehensive Itinerary:** Enjoy a well-structured plan that ensures you make the most of your time, from morning till evening.
 
+<<<<<<< HEAD
     As you embark on this journey, remember that the world is full of beautiful experiences waiting to be discovered. Take the time to savor each moment, meet new people, and create unforgettable memories. 
+=======
+    As you embark on this journey, remember that the world is full of beautiful experiences waiting to be discovered. Take the time to savor each moment, meet new people, and create unforgettable memories.
+>>>>>>> 24e8a5a2079476a79312e1773a8779f7338666d1
 
     We hope you find this guide/itinerary helpful, and we are excited for the adventures that lie ahead! Should you have any questions or need further assistance, please don't hesitate to reach out.
 
@@ -155,7 +177,11 @@ def send_email(email, pdf_filename, title):
     Best Regards,
     Your Travel Companion Team
     """
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 24e8a5a2079476a79312e1773a8779f7338666d1
     # yag.send(to=email, subject=subject, contents=body, attachments=pdf_filename)
     print("Email sent successfully.")
 
