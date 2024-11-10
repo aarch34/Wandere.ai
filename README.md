@@ -1,4 +1,4 @@
-# AI Meets Wanderlust: Personalized Travel Itinerary Generator
+# WANDERE.AI: Personalized Travel Itinerary Generator
 
 ### *Where AI Meets Wanderlust*
 ---
