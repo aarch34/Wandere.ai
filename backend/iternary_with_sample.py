@@ -6,11 +6,7 @@ from reportlab.pdfgen import canvas
 import yagmail
 from huggingface_hub import InferenceClient
 
-<<<<<<< HEAD
-client = InferenceClient(api_key="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")
-=======
 client = InferenceClient(api_key=os.getenv("api_key"))
->>>>>>> 24e8a5a2079476a79312e1773a8779f7338666d1
 conversation_history = []
 
 
